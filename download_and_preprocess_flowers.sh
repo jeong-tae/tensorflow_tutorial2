@@ -85,3 +85,4 @@ while read LABEL; do
   done
 done < "${LABELS_FILE}"
 
+# converting TFRecord script is deleted
