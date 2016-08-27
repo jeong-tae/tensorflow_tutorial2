@@ -15,11 +15,23 @@ label_dict = {
 WIDTH = 224
 HEIGHT = 224
 
+def save_pkl(obj, path):
+  with open(path, 'w') as f:
+    cPickle.dump(obj, f)
+    print("  [*] save %s" % path)
+
+def load_pkl(path):
+  with open(path) as f:
+    obj = cPickle.load(f)
+    print("  [*] load %s" % path)
+    return obj
+
 def image_label(file_name):
     for name in label_dict.keys():
-        if file_name in name:
+        if name in file_name:
             return label_dict[name]
-
+    
+    print(file_name)
     raise "unknown label %s" % file_name
 
 def load_data(data_dir = 'flowers/'):
@@ -38,8 +50,8 @@ def load_data(data_dir = 'flowers/'):
 
 def data2pickle(data_dir = 'flowers/'):
 
-    train_files = glob.glob('%s/raw-data/train/*/*.jpg' % data_dir)
-    test_files = glob.glob('%s/raw-data/validation/*/*.jpg' % data_dir)
+    train_files = glob.glob('%sraw-data/train/*/*.jpg' % data_dir)
+    test_files = glob.glob('%sraw-data/validation/*/*.jpg' % data_dir)
 
     random.shuffle(train_files)
 
@@ -60,7 +72,7 @@ def data2pickle(data_dir = 'flowers/'):
     train_path = data_dir + 'train.pkl'
     test_path = data_dir + 'test.pkl'
 
-    save_pkl(train_path, train_data)
-    save_pkl(test_path, test_data)
+    save_pkl(train_data, train_path)
+    save_pkl(test_data, test_path)
 
     return train_data, test_data

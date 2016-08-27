@@ -1,3 +1,4 @@
+import tensorflow as tf
 import numpy as np
 
 from config import base_config as config
@@ -16,7 +17,7 @@ def run_task(data_dir, task_name = ''):
 
 def main(_):
     
-    run_task('flowers', 'flower_recognition')
+    run_task('flowers/', 'flower_recognition')
 
 if __name__ == '__main__':
     tf.app.run()
