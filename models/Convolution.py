@@ -17,8 +17,7 @@ class convNet(object):
 
         # training detail
         self.batch_size = config.batch_size
-        self.g_step = tf.Variable(0)
-        self.lr = tf.train.exponential_decay(config.lr, self.g_step, len(self.train_range), 0.95)
+        self.lr = config.lr
         self.image_size = config.image_size
         self.channels = config.channels
         self.num_classes = config.num_classes
@@ -49,7 +48,7 @@ class convNet(object):
         total_loss = []
         
         for step, (data_in, label_in) in tqdm(enumerate(self.data_iteration(self.train_data, True)), desc = 'train'):
-            _, _, loss, preds = self.sess.run([self.op, self.g_step, self.loss, self.preds],
+            _, loss, preds = self.sess.run([self.op, self.loss, self.preds],
                             feed_dict = {
                                     self.input_data: data_in,
                                     self.input_labels: label_in
