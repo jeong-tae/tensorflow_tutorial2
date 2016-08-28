@@ -1,5 +1,5 @@
 # data
 flowers
-chechpoints
+checkpoints
 *.pyc
 models/sample_model.py
