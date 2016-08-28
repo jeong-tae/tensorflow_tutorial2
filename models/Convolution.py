@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 from tqdm import tqdm
 from .ops import *
-import pdb
 
 class convNet(object):
     def __init__(self, config, sess, train_data, test_data):
@@ -94,6 +93,9 @@ class convNet(object):
 
         test_loss, test_acc = self.test()
         print("Task: %s, Test loss: %.3f, Test Acc: %.3f" % (str(task_name), test_loss, test_acc))    
+
+    def demo(self):
+        pass
 
     def data_iteration(self, data, is_train = True):
         """
