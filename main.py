@@ -3,7 +3,7 @@ import numpy as np
 import sys
 
 from config import base_config as config
-from models import convNet2 as convNet
+from models import convNet
 from flower_data import load_data
 
 import pdb
