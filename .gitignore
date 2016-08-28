@@ -2,4 +2,5 @@
 flowers
 checkpoints
 *.pyc
+*.swp
 models/sample_model.py
