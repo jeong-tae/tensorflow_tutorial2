@@ -13,4 +13,4 @@ class base_config(object):
         self.image_size = 224
         self.channels = 3
 
-        self.max_epoch = 50
+        self.max_epoch = 10
