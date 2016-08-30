@@ -58,18 +58,21 @@ else
   echo "Skipping download of flower data."
 fi
 
+SCRATCH_DIR="raw-data/"
 # Note the locations of the train and validation data.
-TRAIN_DIRECTORY="${SCRATCH_DIR}train/"
-VALIDATION_DIRECTORY="${SCRATCH_DIR}validation/"
-
+TRAIN_DIRECTORY="${SCRATCH_DIR}/train/"
+VALIDATION_DIRECTORY="${SCRATCH_DIR}/validation/"
 # Expands the data into the flower_photos/ directory and rename it as the
 # train directory.
+echo "Decompressing flower_photos.tgz..."
 tar xf flower_photos.tgz
+
 rm -rf "${TRAIN_DIRECTORY}" "${VALIDATION_DIRECTORY}"
 mv flower_photos "${TRAIN_DIRECTORY}"
 
+echo "Data split..."
 # Generate a list of 5 labels: daisy, dandelion, roses, sunflowers, tulips
-LABELS_FILE="${SCRATCH_DIR}/labels.txt"
+LABELS_FILE="${SCRATCH_DIR}labels.txt"
 ls -1 "${TRAIN_DIRECTORY}" | grep -v 'LICENSE' | sed 's/\///' | sort > "${LABELS_FILE}"
 
 # Generate the validation data set.
