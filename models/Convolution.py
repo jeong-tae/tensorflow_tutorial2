@@ -31,6 +31,38 @@ class convNet(object):
         Find logits and optimize
         WANRNING: end point operation should be appended to op_list
         """
+        
+        # conv1
+        with tf.name_scope('conv1') as scope:
+            kernel = tf.Variable(tf.truncated_normal([11, 11, 3, 16], dtype=tf.float32, stddev=1e-1), name='weights')
+            conv = tf.nn.conv2d(self.input_data, kernel, [1, 4, 4, 1], padding='SAME')
+            biases = tf.Variable(tf.constant(0.0, shape=[16], dtype=tf.float32), trainable=True, name='biases')
+            bias = tf.nn.bias_add(conv, biases)
+            conv1 = tf.nn.relu(bias, name=scope)
+        
+        # pool1
+        pool1 = tf.nn.max_pool(conv1, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1], padding='VALID', name='pool1')
+        
+        # conv2
+        
+        # pool2
+        
+        # conv3
+        
+        # conv4
+        
+        # conv5
+        
+        # pool5
+        
+        # fc6
+        
+         with tf.name_scope('fc7') as scope:
+            fc7_weight = tf.Variable(tf.truncated_normal([256, self.num_classes], dtype=tf.float32, stddev=1e-1), name='weights')
+            fc7_biases = tf.Variable(tf.constant(0.0, shape=[self.num_classes], dtype=tf.float32), trainable=True, name='biases')
+            fc7 = tf.nn.bias_add(tf.matmul(fc6, fc7_weight), fc7_biases)
+
+        logits = fc7
 
         op_list = []
 
