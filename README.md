@@ -16,4 +16,4 @@ train:
 demo:
 >>python main.py test/daisy.jpg
 
-to demo, type in file_path as a third argument. demo should be excuted after train.
+For demo, type in file_path as a third argument. demo should be excuted after train.
