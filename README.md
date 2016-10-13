@@ -16,6 +16,10 @@ fill in Convolution.py like as answer.py(see models/answer.py). funtion run(), b
 
 ## usage
 
+To download:
+
+    $ ./download_and_preprocess_flowers.sh flowers
+
 train:
 
     $ python main.py
